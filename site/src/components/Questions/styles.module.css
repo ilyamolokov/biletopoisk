@@ -1,0 +1,41 @@
+.questions {
+    gap:24px;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    background: #F8F8F8;
+}
+.questionAndAnswer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 8px;
+    background-color: white;
+    padding:24px;
+    cursor:pointer;
+}
+.questionsHeader {
+    padding:24px;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 8px;
+}
+.question {
+    font-weight: 500;
+}
+.buttonUp {
+    rotate: 180deg;
+}
+.buttonDown {
+    rotate: 0deg;
+}
+.answerIsOpen {
+    margin-top:16px;
+    display: block;
+    transition: all 1s;
+}
+.answerClosed {
+    display: none;
+    transition: all 1s;
+}

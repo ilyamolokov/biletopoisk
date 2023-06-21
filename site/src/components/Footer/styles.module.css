@@ -1,0 +1,14 @@
+.footer {
+    height:86px;
+    display: flex;
+    background: #333333;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    color:white;
+}
+.footerText {
+    font-size:20px;
+    font-weight: 400;
+}
