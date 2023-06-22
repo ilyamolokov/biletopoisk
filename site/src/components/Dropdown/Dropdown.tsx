@@ -1,9 +1,11 @@
 import { FunctionComponent, useState } from "react"
 import styles from "./styles.module.css"
 
-export const Dropdown: FunctionComponent<any> = ({ children }: any) => {
+export const Dropdown: FunctionComponent<any> = ({ children, position }: any) => {
+    const topMargin = 72;
+    position.top = position.top + topMargin;
     return (
-        <div className={styles.dropdown}>
+        <div className={styles.dropdown} style={position}>
             {children?.map((child: string) => <div className={styles.dropdownChild}>{child}</div>)}
         </div>
     )

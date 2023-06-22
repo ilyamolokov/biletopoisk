@@ -4,7 +4,7 @@ import styles from "./styles.module.css"
 import { Question } from "@/components/Question/Question"
 
 export default function QuestionsPage() {
-    const QandA = [
+    const qAndA = [
         {
             question:'Что такое Билетопоиск?',
             answer:'Мы — крупнейший сервис о кино в рунете. На нем вы сможете посмотреть фильмы и сериалы, купить билеты в кино, узнать рейтинги популярных видео и интересные факты, поставить фильмам оценки, написать рецензии и дополнить описание фильмов.'
@@ -26,7 +26,7 @@ export default function QuestionsPage() {
         <div className={styles.qAndASection}>
             <h1 className={styles.questionsHeader}>Вопросы-ответы</h1>
             {
-                QandA.map((element, index) => <Question key={index} question={element.question} answer={element.answer}/>)
+                qAndA.map((element, index) => <Question key={index} question={element.question} answer={element.answer}/>)
             }
         </div>
     )

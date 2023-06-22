@@ -2,8 +2,17 @@
     padding: 8px;
     box-shadow: 0px 10px 22px -4px rgba(27, 31, 35, 0.12);
     border-radius: 8px;
+    width: 360px;
+    position: absolute;
+    background: white;
 }
 .dropdownChild {
     padding: 12px 12px 10px 12px;
     color:#1B1F23;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.dropdownChild:hover {
+    background: #F8F8F8;
+
 }
