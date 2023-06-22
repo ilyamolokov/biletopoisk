@@ -1,34 +1,22 @@
-import { FunctionComponent } from "react"
+'use client'
+import { FunctionComponent, useState } from "react"
 import styles from "./styles.module.css"
+import { FilterSearch } from "@/components/FilterSearch/FilterSearch"
 
 export const MainPage: FunctionComponent = () => {
     return (
         <div className={styles.pageContainer}>
             <div className={styles.filterContainer}>
                 <h4>Фильтр поиска</h4>
-                <br/>
+                <br />
                 <form className={styles.filterForm}>
                     <label>
                         <p className={styles.fieldName}>Название</p>
                         <input className={styles.textField} type="text"  placeholder="Выберите название"/>
                     </label>
-                    <label>
-                        <p className={styles.fieldName}>Жанр</p>
-                        <select className={styles.selectField}>
-                            <option value="0">Select car:</option>
-                            <option value="1">Audi</option>
-                            <option value="2">BMW</option>
-                        </select>
-                    </label>
-                    {/* <label>
-                        <p className={styles.fieldName}>Кинотеатр</p>
-                        <select className={styles.selectField}>
-                            <option value="0">Select car:</option>
-                            <option value="1">Audi</option>
-                            <option value="2">BMW</option>
-                        </select>
-                    </label> */}
-                </form> 
+                    <FilterSearch children={['hello','world','me']}/>
+                    <FilterSearch children={['a','b','c']}/>
+                </form>
             </div>
         </div>
     )

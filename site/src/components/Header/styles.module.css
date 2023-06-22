@@ -28,3 +28,6 @@
     background: #FF5500;
     border-radius: 8px;
 }
+.cartIcon {
+    cursor:pointer;
+}

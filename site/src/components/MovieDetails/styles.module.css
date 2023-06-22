@@ -12,9 +12,13 @@
 .movieImage {
     width:400px;
     height:500px;
-    background: red;
-
+    background: #E0E0E0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
 }
+
 .movieInfo {
     width:100%;
     display: flex;

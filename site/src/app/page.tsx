@@ -19,10 +19,10 @@ const roboto = Roboto({
 export default function Home() {
   return <div className={roboto.className}>
     {/* <Header /> */}
-    {/* <MovieCard />
-    <Footer/> */}
+    <MovieDetails />
+    {/* <Footer/>  */}
     {/* <Questions/> */}
 
-    <MainPage/>
+    {/* <MainPage/> */}
   </div>
 }

@@ -30,12 +30,8 @@
 .buttonDown {
     rotate: 0deg;
 }
-.answerIsOpen {
+.answer {
     margin-top:16px;
     display: block;
-    transition: all 1s;
 }
-.answerClosed {
-    display: none;
-    transition: all 1s;
-}
+

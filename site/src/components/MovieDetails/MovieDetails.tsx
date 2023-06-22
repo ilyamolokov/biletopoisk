@@ -4,7 +4,11 @@ import styles from "./styles.module.css"
 export const MovieDetails: FunctionComponent = () => {
     return (
         <div className={styles.movieDetails}>
-            <div className={styles.movieImage}></div>
+            {
+                <div className={styles.movieImage}>
+                    <img rel="icon" src="icons/review.svg" sizes="9x9" />
+                </div>
+            }
             <div className={styles.movieInfo}>
                 <div className={styles.movieNameAndAddToCart}>
                     <h1 className={styles.movieName}>Властелин колец: Братство кольца</h1>
