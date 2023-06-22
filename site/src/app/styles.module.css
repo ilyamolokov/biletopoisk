@@ -1,16 +1,14 @@
-.pageContainer {
-    background:#F8F8F8;
+.mainPageContainer {
     display: flex;
     flex-direction: row;
 }
 .filterContainer {
     padding: 24px;
-    height: 862px;
+    height: 100vh;
     width:408px;
     background: white;
     border-radius: 8px;
 }
-
 .filterForm {
     display: flex;
     flex-direction: column;
@@ -25,15 +23,19 @@
     justify-content: space-between;
     height: 40px;
     width: 360px;
-    left: 0px;
+    left: 0px;  
     top: 24px;
     border-radius: 8px;
     border: 1px solid #E1E3E6;
     padding: 10px 16px 10px 16px;
     cursor:pointer;
+    font-size: 14px;
 }
 .textField::placeholder {
-    color:#E1E3E6;
+    color:#999FA6;
+}
+.textField:focus {
+    outline-color: #FF5500;
 }
 .fieldName {
     margin-bottom: 4px;

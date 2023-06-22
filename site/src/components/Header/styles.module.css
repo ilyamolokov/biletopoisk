@@ -6,9 +6,14 @@
     align-items: center;
     padding: 24px 32px;
     color:white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 .headerTitle {
     font-weight: 700;
+    font-size:32px;
 }
 .cartContainer{
     display: flex;

@@ -12,6 +12,9 @@
     padding: 10px 16px 10px 16px;
     cursor:pointer;
 }
+.selectFieldActive {
+    border: 1px solid #FF5500;
+}
 .buttonUp {
     rotate: 180deg;
 }
@@ -20,4 +23,8 @@
 }
 .fieldName {
     margin-bottom: 4px;
+}
+.placeholder {
+    font-size: 14px;
+    color:#999FA6;
 }

@@ -1,9 +1,7 @@
-.questions {
+.question {
     gap:24px;
-    padding: 24px 32px;
     display: flex;
     flex-direction: column;
-    background: #F8F8F8;
 }
 .questionAndAnswer {
     display: flex;
@@ -14,12 +12,6 @@
     background-color: white;
     padding:24px;
     cursor:pointer;
-}
-.questionsHeader {
-    padding:24px;
-    font-weight: 500;
-    background-color: white;
-    border-radius: 8px;
 }
 .question {
     font-weight: 500;

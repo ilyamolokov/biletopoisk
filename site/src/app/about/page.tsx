@@ -1,7 +1,8 @@
-import { FunctionComponent } from "react"
+'use client'
+
 import styles from "./styles.module.css"
 
-export const About: FunctionComponent = () => {
+export default function About(){
     return (
         <div className={styles.about}>
             <h1>О нас</h1>

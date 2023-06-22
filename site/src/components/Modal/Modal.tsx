@@ -1,5 +1,5 @@
 'use client'
-import { FunctionComponent, SetStateAction, useEffect, useRef, useState } from "react"
+import { FunctionComponent, SetStateAction, useCallback, useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
 
 interface Props {
@@ -8,17 +8,19 @@ interface Props {
 
 export const Modal: FunctionComponent<Props> = ({setIsModalOpen}) => {
     const ref = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = useCallback((event: MouseEvent) => {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+            setIsModalOpen(false);
+        }
+    }, []); 
+    
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (ref.current && !ref.current.contains(event.target as Node)) {
-                setIsModalOpen(false);
-            }
-        };
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [ref]);
+    }, [handleClickOutside]);
 
 
     return (

@@ -1,11 +1,12 @@
 import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
+import Link from "next/link"
 
 export const Footer: FunctionComponent = () => {
     return <>
         <footer className={styles.footer}>
-            <h2 className={styles.footerText}>Вопросы-ответы</h2>
-            <h2 className={styles.footerText}>О нас</h2>
+            <Link href="/questions" className={styles.footerText}>Вопросы-ответы</Link>
+            <Link href="/about" className={styles.footerText}>О нас</Link>
         </footer>
     </>
 }

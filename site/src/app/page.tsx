@@ -1,28 +1,26 @@
-import { Footer } from "@/components/Footer/Footer";
-import { Header } from "@/components/Header/Header";
-import { MovieCard } from "@/components/MovieCard/MovieCard";
-import { Review } from "@/components/Review/Review";
-import { MovieDetails } from "@/components/MovieDetails/MovieDetails";
-import { Questions } from "@/components/Questions/Questions";
+// 'use client'
+import { FunctionComponent, useState } from "react"
+import styles from "./styles.module.css"
+import { FilterSearch } from "@/components/FilterSearch/FilterSearch"
 
-import { MainPage } from "@/pages/MainPage/MainPage";
+export default function Main() {
+  return (
+    <div className={styles.mainPageContainer}>
+      <div className={styles.filterContainer}>
+        <h4>Фильтр поиска</h4>
+        <br />
+        <form className={styles.filterForm}>
+          <label>
+            <p className={styles.fieldName}>Название</p>
+            <input className={styles.textField} type="text" placeholder="Выберите название" />
+          </label>
+          <FilterSearch label={'Жанр'} placeholder={'Выберите жанр'} children={['hello', 'world', 'me']} />
+          <FilterSearch label={'Кинотеатр'} placeholder={'Выберите кинотеатр'} children={['a', 'b', 'c']} />
+        </form>
+      </div>
+      <div className={styles.movieList}>
 
-import { Roboto } from 'next/font/google'
-
-const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-export default function Home() {
-  return <div className={roboto.className}>
-    {/* <Header /> */}
-    <MovieDetails />
-    {/* <Footer/>  */}
-    {/* <Questions/> */}
-
-    {/* <MainPage/> */}
-  </div>
+      </div>
+    </div>
+  )
 }
