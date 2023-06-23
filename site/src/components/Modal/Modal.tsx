@@ -1,6 +1,7 @@
 'use client'
 import { FunctionComponent, SetStateAction, useCallback, useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
+import Image from 'next/image'
 
 interface Props {
     setIsModalOpen: React.Dispatch<SetStateAction<boolean>>
@@ -28,7 +29,7 @@ export const Modal: FunctionComponent<Props> = ({setIsModalOpen}) => {
             <div className={styles.modal} ref={ref}>
                 <div className={styles.modalHeader}>
                     <p  className={styles.title}>Удаление билета</p>
-                    <img className={styles.exit} onClick={()=>setIsModalOpen(currentValue=>false)} rel="icon" src="icons/exit.svg" sizes="10x10" />
+                    <Image className={styles.exit} onClick={()=>setIsModalOpen(currentValue=>false)} rel="icon" src="/icons/exit.svg" width={10} height={10} alt="exit"/>
                 </div>
                 <p className={styles.description}>Вы уверены, что хотите удалить билет?</p>
                 <div className={styles.buttons}>

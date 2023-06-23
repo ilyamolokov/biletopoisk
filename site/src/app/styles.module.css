@@ -1,13 +1,17 @@
 .mainPageContainer {
     display: flex;
     flex-direction: row;
+    gap: 23px;
+
 }
 .filterContainer {
     padding: 24px;
-    height: 100vh;
+    /* height: 100vh; */
     width:408px;
     background: white;
     border-radius: 8px;
+    /* position: sticky;
+    top: 0; */
 }
 .filterForm {
     display: flex;

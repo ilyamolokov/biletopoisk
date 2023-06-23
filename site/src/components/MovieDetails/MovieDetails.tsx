@@ -1,43 +1,51 @@
 import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
+import { GenreKey } from "../MovieCard/MovieCard"
+import { genres } from "@/common/constants"
+import { Counter } from "../Counter/Counter"
+import Image from 'next/image'
 
-export const MovieDetails: FunctionComponent = () => {
+interface Movie {
+    description: string,
+    director: string,
+    genre: string,
+    id: string,
+    posterUrl: string,
+    rating: number,
+    releaseYear: number,
+    reviewIds:string[],
+    title: string,
+}
+
+export const MovieDetails: FunctionComponent<{movie:Movie}> = ({movie}) => {
     return (
         <div className={styles.movieDetails}>
-            {
-                <div className={styles.movieImage}>
-                    <img rel="icon" src="icons/review.svg" sizes="9x9" />
-                </div>
-            }
+            <Image rel="icon" src={movie.posterUrl} className={styles.movieImage} alt="poster" width={400} height={500}/>
             <div className={styles.movieInfo}>
                 <div className={styles.movieNameAndAddToCart}>
-                    <h1 className={styles.movieName}>Властелин колец: Братство кольца</h1>
-                    <div className={styles.addToCart}>
-                        <img className={styles.button} rel="icon" src="icons/minus.svg" sizes="9x9" />
-                        <span className={styles.quantity} >0</span>
-                        <img className={styles.button} rel="icon" src="icons/plus.svg" sizes="9x9" />
-                    </div>
+                    <h1 className={styles.movieName}>{movie.title}</h1>
+                    <Counter/>
                 </div>
                 <span className={styles.details}>
                     <b>Жанр: </b>
-                    {'Фэнтези'}
+                    {genres[movie.genre as GenreKey]}
                 </span>
                 <span className={styles.details}>
                     <b>Год выпуска: </b>
-                    {'2001'}
+                    {movie.releaseYear}
                 </span>
                 <span className={styles.details}>
                     <b>Рейтинг: </b>
-                    {'8'}
+                    {movie.rating}
                 </span>
                 <span className={styles.details}>
                     <b>Режиссер: </b>
-                    {'Питер Джексон'}
+                    {movie.director}
                 </span>
                 <span className={styles.description}>
                     <b>Описание: </b>
                     <div className={styles.text}>
-                        {'Сказания о Средиземье — это хроника Великой войны за Кольцо, длившейся не одну тысячу лет. Тот, кто владел Кольцом, получал неограниченную власть, но был обязан служить злу. Тихая деревня, где живут хоббиты. Придя на 111-й день рождения к своему старому другу Бильбо Бэггинсу, волшебник Гэндальф начинает вести разговор о кольце, которое Бильбо нашел много лет назад. Это кольцо принадлежало когда-то темному властителю Средиземья Саурону, и оно дает большую власть своему обладателю. Теперь Саурон хочет вернуть себе власть над Средиземьем. Бильбо отдает Кольцо племяннику Фродо, чтобы тот отнёс его к Роковой Горе и уничтожил.'}
+                        {movie.description}
                     </div>
                 </span>
             </div>

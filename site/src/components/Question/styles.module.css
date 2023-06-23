@@ -19,9 +19,6 @@
 .buttonUp {
     rotate: 180deg;
 }
-.buttonDown {
-    rotate: 0deg;
-}
 .answer {
     margin-top:16px;
     display: block;

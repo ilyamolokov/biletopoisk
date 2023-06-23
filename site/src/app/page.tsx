@@ -1,9 +1,11 @@
-// 'use client'
+'use client'
 import { FunctionComponent, useState } from "react"
 import styles from "./styles.module.css"
 import { FilterSearch } from "@/components/FilterSearch/FilterSearch"
+import { MovieList } from "@/components/MovieList/MovieList"
 
 export default function Main() {
+
   return (
     <div className={styles.mainPageContainer}>
       <div className={styles.filterContainer}>
@@ -18,9 +20,7 @@ export default function Main() {
           <FilterSearch label={'Кинотеатр'} placeholder={'Выберите кинотеатр'} children={['a', 'b', 'c']} />
         </form>
       </div>
-      <div className={styles.movieList}>
-
-      </div>
+      <MovieList/>
     </div>
   )
 }

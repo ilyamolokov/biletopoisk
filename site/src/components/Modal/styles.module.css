@@ -39,6 +39,10 @@
     border:none;
     cursor:pointer;
 }
+.buttonYes:hover {
+    background: #E94E00;
+
+}
 .buttonNo {
     font-size: 14px;
     background: white;
@@ -47,4 +51,7 @@
     padding: 11px 15px;
     border:2px solid #FF5500;
     cursor:pointer;
+}
+.buttonNo:hover {
+    border:2px solid #E94E00;
 }

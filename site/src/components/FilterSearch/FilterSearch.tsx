@@ -3,6 +3,7 @@ import { FunctionComponent, useCallback, useEffect, useRef, useState } from "rea
 import styles from "./styles.module.css"
 import { createPortal } from "react-dom"
 import { Dropdown } from "../Dropdown/Dropdown"
+import Image from 'next/image'
 
 export const FilterSearch: FunctionComponent<any> = ({ label, placeholder, children }: any) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -35,7 +36,7 @@ export const FilterSearch: FunctionComponent<any> = ({ label, placeholder, child
                 setIsDropdownOpen(!isDropdownOpen)
             }} >
                 <span className={styles.fieldName}>{placeholder}</span>
-                <img className={isDropdownOpen ? styles.buttonUp : styles.buttonDown} rel="icon" src="icons/open-grey.svg" sizes="18x18" />
+                <Image className={isDropdownOpen ? styles.buttonUp : ""} rel="icon" src="/icons/open-grey.svg" width={18} height={18} alt="open"/>
             </div>
             {isDropdownOpen && createPortal(
                 <Dropdown position={dropDownPos} children={children} />,
