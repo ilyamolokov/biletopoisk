@@ -1,9 +1,12 @@
+"use client"
 import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
 import { genres } from "@/common/constants"
 import { Counter } from "../Counter/Counter";
 import Image from 'next/image'
-
+import { useSelector } from "react-redux";
+import { selectProductAmount } from "@/redux/features/cart/selector";
+import { RootState } from "@/redux/features/cart/selector";
 export type GenreKey = "fantasy" | "horror" | "action" | "comedy";
 
 interface Movie {
@@ -19,16 +22,17 @@ interface Movie {
 }
 
 export const MovieCard: FunctionComponent<any> = ({movie}) => {
+
     return (
-            <div className={styles.movieCard}>
-                <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={100} height={120}/>
-                <div className={styles.movieInfo}>
-                    <div className={styles.movieName}>
-                        <span>{movie.title}</span>
-                        <Counter/>
-                    </div>
-                    <span className={styles.movieGenre}>{genres[movie.genre as GenreKey] || ''}</span>
+        <div className={styles.movieCard}>
+            <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={100} height={120}/>
+            <div className={styles.movieInfo}>
+                <div className={styles.movieName}>
+                    <span>{movie.title}</span>
+                    <Counter movieId={movie.id}/>
                 </div>
+                <span className={styles.movieGenre}>{genres[movie.genre as GenreKey] || ''}</span>
             </div>
+        </div>
     )
 }

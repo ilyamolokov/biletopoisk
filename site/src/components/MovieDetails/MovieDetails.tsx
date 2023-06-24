@@ -24,7 +24,7 @@ export const MovieDetails: FunctionComponent<{movie:Movie}> = ({movie}) => {
             <div className={styles.movieInfo}>
                 <div className={styles.movieNameAndAddToCart}>
                     <h1 className={styles.movieName}>{movie.title}</h1>
-                    <Counter/>
+                    <Counter movieId={movie.id}/>
                 </div>
                 <span className={styles.details}>
                     <b>Жанр: </b>

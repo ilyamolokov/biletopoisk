@@ -22,7 +22,6 @@ interface Review {
 type Movies = Movie[]
 type Reviews = Review[]
 
-
 export const movieApi = createApi({
     reducerPath: "movie",
     baseQuery: fetchBaseQuery({ baseUrl:" http://localhost:3001/api/" }),
@@ -30,7 +29,6 @@ export const movieApi = createApi({
         getMovies: builder.query<Movies, void>({ query: () => "movies" }),
         getMovie: builder.query<Movie, string>({ query: (movieId) => `movie?movieId=${movieId}` }),
         getReview: builder.query<Reviews, string>({ query: (movieId) => `reviews?movieId=${movieId}` }),
-
     })
 })
 

@@ -18,7 +18,7 @@ export const MovieList = () => {
         <div className={styles.movieList}>
             {data.map(movie => {
                 return (
-                    <Link href={`movie/${movie.id}`}>
+                    <Link href={`/movie/${movie.id}`}>
                         <MovieCard key={movie.id} movie={movie}/>
                     </Link>
                 )

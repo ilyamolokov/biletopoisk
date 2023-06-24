@@ -1,11 +1,55 @@
-import { FunctionComponent } from "react"
+"use client"
+import { FunctionComponent, useState } from "react"
 import styles from "./styles.module.css"
 import Image from 'next/image'
+import { useDispatch } from "react-redux"
+import { cartActions } from "@/redux/features/cart"
+import { useSelector } from "react-redux";
+import { selectProductAmount } from "@/redux/features/cart/selector";
+import { RootState } from "@/redux/features/cart/selector";
+import { usePathname } from 'next/navigation'
+import { createPortal } from "react-dom"
+import { Modal } from "../Modal/Modal"
 
-export const Counter: FunctionComponent = () => {
-    return (<div className={styles.addToCart}>
-        <Image className={styles.button} rel="icon" src="/icons/minus.svg" sizes="9x9" width={20} height={20} alt="minus"/>
-        <span className={styles.quantity} >0</span>
-        <Image className={styles.button} rel="icon" src="/icons/plus.svg" sizes="9x9" width={20} height={20} alt="plus" />
-    </div>)
+export const Counter: FunctionComponent<{movieId:string}> = ({ movieId }) => {
+    const dispatch = useDispatch();
+    const path = usePathname();
+    const productAmount = useSelector((state:RootState) => selectProductAmount(state, movieId))
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleIncrement = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+        event.stopPropagation();
+        event.preventDefault();
+        dispatch(cartActions.increment(movieId))
+    }
+    const handleDecrement = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+        event.stopPropagation();
+        event.preventDefault();
+        if(productAmount===1) {
+            setIsModalOpen(true)
+        } else {
+            dispatch(cartActions.decrement(movieId))
+        }
+    }
+    const handleModal = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+        event.stopPropagation();
+        event.preventDefault();
+        setIsModalOpen(true)
+    }
+    console.log(productAmount)
+    return (
+        <div className={styles.addToCart}>
+            <Image onClick={ (e)=> handleDecrement(e) }  className={productAmount === 0 ? `${styles.buttonActive} ${styles.buttonInactive}` : styles.buttonActive} rel="icon" src="/icons/minus.svg" sizes="9x9" width={20} height={20} alt="minus"/>
+            <span className={styles.quantity}>{productAmount}</span>
+            <Image onClick={ (e)=> handleIncrement(e) } className={productAmount === 30 ? `${styles.buttonActive} ${styles.buttonInactive}` : styles.buttonActive} rel="icon" src="/icons/plus.svg" sizes="9x9" width={20} height={20} alt="plus" />
+            {
+                path === "/cart" 
+                &&  
+                <>
+                    <Image className={styles.exit} onClick={(e)=>{handleModal(e)}} rel="icon" src="/icons/exit.svg" sizes="9x9" width={20} height={20} alt="exit"/>
+                    {isModalOpen && createPortal(<Modal movieId={movieId} setIsModalOpen={setIsModalOpen}/>, document.getElementById("modal")!)}
+                </>
+            }
+        </div>
+    )
 }
