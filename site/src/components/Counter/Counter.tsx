@@ -25,18 +25,18 @@ export const Counter: FunctionComponent<{movieId:string}> = ({ movieId }) => {
     const handleDecrement = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         event.stopPropagation();
         event.preventDefault();
-        if(productAmount===1) {
-            setIsModalOpen(true)
+        if(path === "/cart") {
+            productAmount===1 ? setIsModalOpen(true) : dispatch(cartActions.decrement(movieId))
         } else {
             dispatch(cartActions.decrement(movieId))
         }
+        
     }
     const handleModal = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         event.stopPropagation();
         event.preventDefault();
         setIsModalOpen(true)
     }
-    console.log(productAmount)
     return (
         <div className={styles.addToCart}>
             <Image onClick={ (e)=> handleDecrement(e) }  className={productAmount === 0 ? `${styles.buttonActive} ${styles.buttonInactive}` : styles.buttonActive} rel="icon" src="/icons/minus.svg" sizes="9x9" width={20} height={20} alt="minus"/>
@@ -47,7 +47,7 @@ export const Counter: FunctionComponent<{movieId:string}> = ({ movieId }) => {
                 &&  
                 <>
                     <Image className={styles.exit} onClick={(e)=>{handleModal(e)}} rel="icon" src="/icons/exit.svg" sizes="9x9" width={20} height={20} alt="exit"/>
-                    {isModalOpen && createPortal(<Modal movieId={movieId} setIsModalOpen={setIsModalOpen}/>, document.getElementById("modal")!)}
+                    {isModalOpen && createPortal(<Modal movieId={movieId} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>, document.getElementById("modal")!)}
                 </>
             }
         </div>

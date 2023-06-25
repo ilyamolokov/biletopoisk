@@ -1,3 +1,4 @@
+import { API_URL } from '@/common/constants';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit"
 
@@ -18,18 +19,32 @@ interface Review {
     text:string, 
     rating: number
 }
+interface Cinema { 
+    id: string, 
+    name: string, 
+    movieIds:string[],
+}
 
-type Movies = Movie[]
-type Reviews = Review[]
+export type Movies = Movie[]
+export type Reviews = Review[]
+export type Cinemas = Cinema[]
 
 export const movieApi = createApi({
     reducerPath: "movie",
-    baseQuery: fetchBaseQuery({ baseUrl:" http://localhost:3001/api/" }),
+    baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
     endpoints:(builder) => ({
         getMovies: builder.query<Movies, void>({ query: () => "movies" }),
         getMovie: builder.query<Movie, string>({ query: (movieId) => `movie?movieId=${movieId}` }),
+
         getReview: builder.query<Reviews, string>({ query: (movieId) => `reviews?movieId=${movieId}` }),
+
+        getCinemas: builder.query<Cinemas, void>({ query: () => 'cinemas' }),
     })
 })
 
-export const { useGetMoviesQuery, useGetMovieQuery,  useGetReviewQuery} = movieApi;
+export const { 
+    useGetMoviesQuery, 
+    useGetMovieQuery,  
+    useGetReviewQuery,
+    useGetCinemasQuery,
+} = movieApi;

@@ -2,16 +2,24 @@
     display: flex;
     flex-direction: row;
     gap: 23px;
-
+    width: 100%;
+    flex-grow: 1;
+}
+.movieList {
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    width:100%;
+}
+.filterOuterContainer {
+    background-color: white;
+    border-radius: 8px;
 }
 .filterContainer {
     padding: 24px;
-    /* height: 100vh; */
     width:408px;
-    background: white;
-    border-radius: 8px;
-    /* position: sticky;
-    top: 0; */
+    top: 9%;
+    position: sticky;
 }
 .filterForm {
     display: flex;
@@ -23,7 +31,7 @@
 .textField {
     display: flex;
     flex-direction: row;
-    color: #999FA6;
+    color: #1B1F23;
     justify-content: space-between;
     height: 40px;
     width: 360px;
@@ -43,4 +51,11 @@
 }
 .fieldName {
     margin-bottom: 4px;
+}
+.movieListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
 }

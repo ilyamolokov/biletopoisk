@@ -15,7 +15,7 @@ export const Header: FunctionComponent = () => {
     return <>
         <header className={styles.header}>
             <Link href="/" className={styles.headerTitle}>Билетопоиск</Link>
-            <div className={styles.cartContainer}>
+            <div className={styles.cartIconContainer}>
                 {!!productAmount && <div className={styles.quantity}>{productAmount}</div>}
                 <Link href={'/cart'}>
                     <Image className={styles.cartIcon} rel="icon" alt="cart" src="/icons/cart.svg" width={32} height={32} />

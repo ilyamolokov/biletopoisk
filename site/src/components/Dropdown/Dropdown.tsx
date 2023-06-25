@@ -4,7 +4,7 @@ import styles from "./styles.module.css"
 export const Dropdown: FunctionComponent<any> = ({ children, position }: any) => {
     const topMargin = 72;
     position.top += topMargin;
-    position.position = "fixed";
+    // position.position = "fixed";
 
     return (
         <div className={styles.dropdown} style={position}>

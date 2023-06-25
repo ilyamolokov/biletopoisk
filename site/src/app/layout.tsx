@@ -34,7 +34,7 @@ export default function RootLayout({
               {children}
           </main>
           <Footer/>
-        </StoreProvider>
+        </StoreProvider >
         
         <div id="dropdown"></div>    
         <div id="modal"></div>        

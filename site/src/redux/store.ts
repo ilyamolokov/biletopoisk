@@ -10,6 +10,3 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(movieApi.middleware),
     devTools: process.env.NODE_ENV !== 'production',
 })
-/* 
-    console.log(store.getState()) 
-*/

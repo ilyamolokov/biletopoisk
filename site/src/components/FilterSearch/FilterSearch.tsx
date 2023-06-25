@@ -8,25 +8,9 @@ import Image from 'next/image'
 export const FilterSearch: FunctionComponent<any> = ({ label, placeholder, children }: any) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [dropDownPos, setDropDownPos] = useState({})
-
-    // const ref = useRef<HTMLLabelElement>(null);
-
-    // const handleClickOutside = useCallback((event: MouseEvent) => {
-    //     if (ref.current && !ref.current.contains(event.target as Node)) {
-    //         setIsDropdownOpen(false);
-    //     }
-    // }, []); 
-    
-    // useEffect(() => {
-    //     document.addEventListener('mousedown', handleClickOutside);
-    //     return () => {
-    //         document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    // }, [handleClickOutside]);
     const ref = useRef<HTMLLabelElement>(null);
 
     return (
-        // <label ref={ref}>
         <label ref={ref}>
             <p className={styles.fieldName}>{label}</p>
             <div className={`${styles.selectField} ${isDropdownOpen ? styles.selectFieldActive: ''}`} onClick={() => {

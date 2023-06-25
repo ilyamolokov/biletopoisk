@@ -1,6 +1,6 @@
 'use client'
 import { useGetMovieQuery } from "@/redux/services/movieApi"
-import styles from "./styles.module.css"
+import styles from "./stylmovieDetailses.module.css"
 import { MovieDetails } from "@/components/MovieDetails/MovieDetails"
 import { useRouter } from 'next/router';
 import { Reviews } from "@/components/Reviews/Reviews";
@@ -14,9 +14,10 @@ export default function Movie({ params }: { params: { id: string } }) {
     if (!data || error) {
         return <span>NotFound</span>
     }
-    return (<>
-        <MovieDetails movie={data}/>
-        <Reviews movieId={data.id}/>
-        
-    </>)
+    return (
+        <>
+            <MovieDetails movie={data}/>
+            <Reviews movieId={data.id}/>
+        </>
+    )
 }

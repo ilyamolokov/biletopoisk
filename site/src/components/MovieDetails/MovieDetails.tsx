@@ -19,7 +19,7 @@ interface Movie {
 
 export const MovieDetails: FunctionComponent<{movie:Movie}> = ({movie}) => {
     return (
-        <div className={styles.movieDetails}>
+        <div className={styles.movie}>
             <Image rel="icon" src={movie.posterUrl} className={styles.movieImage} alt="poster" width={400} height={500}/>
             <div className={styles.movieInfo}>
                 <div className={styles.movieNameAndAddToCart}>

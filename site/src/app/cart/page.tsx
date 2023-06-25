@@ -30,7 +30,7 @@ export default function Cart() {
                     {data.map(movie => {
                         if (cartProducts.has(movie.id)) {
                             return (
-                                <Link href={`movie/${movie.id}`}>
+                                <Link href={`movie/${movie.id}`} key={movie.id}>
                                     <MovieCard key={movie.id} movie={movie} />
                                 </Link>
                             )
