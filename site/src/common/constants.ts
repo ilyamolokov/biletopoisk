@@ -22,5 +22,24 @@ export const genres = {
     action:'Боевик',
     comedy:'Комедия',
 }
-export const genresForFilter = ['fantasy','horror','action','comedy']
+
+export const genresForFilter = [
+    {
+        name : 'Фэнтези',
+        id: 'fantasy'
+    },
+    {
+        name : 'Ужасы',
+        id: 'horror'
+    },
+    {
+        name : 'Боевик',
+        id: 'action'
+    },
+    {
+        name : 'Комедия',
+        id: 'comedy'
+    },
+]
+
 export const API_URL = 'http://localhost:3001/api/'

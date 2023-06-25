@@ -14,11 +14,11 @@
 .filterOuterContainer {
     background-color: white;
     border-radius: 8px;
+    /* width:35%; */
 }
 .filterContainer {
     padding: 24px;
-    width:408px;
-    top: 9%;
+    top: 15%;
     position: sticky;
 }
 .filterForm {

@@ -6,8 +6,7 @@ import { MovieList } from "@/components/MovieList/MovieList"
 import { Movies, useGetCinemasQuery, useGetMoviesQuery } from "@/redux/services/movieApi"
 import { MovieCard } from "@/components/MovieCard/MovieCard"
 import Link from "next/link"
-import { API_URL, genresForFilter } from "@/common/constants"
-import { genres } from "@/common/constants"
+import { API_URL, genresForFilter,genres } from "@/common/constants"
 import { GenreKey } from "@/components/MovieCard/MovieCard"
 import { useDispatch } from "react-redux"
 
@@ -18,27 +17,33 @@ export default function Main() {
   const [genre, setGenre] = useState("");
   const [cinemas, setCinemas] = useState<Movies>([]);
 
-  // if (isLoadingCinemas) {
-  //   return <span>Loading...</span>
-  // }
-  // if (!cinemasData || isErrorCinemas) {
-  //   return <span>NotFound</span>
-  // }
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
 
-  const handleGenre = (event: any) => {
-    setGenre(event.target.value);
+  const handleGenre = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const target = event.target as HTMLDivElement;
+    const genre = target.getAttribute('data-value') ?? ''
+    setGenre(genre);
   };
 
-  const handleCinema = (event: any) => {
-    const cinemaId = event.target.value
+  // const handleCinema = (event: any) => {
+  //   const cinemaId = event.target.value
+  //   fetch(API_URL + `movies?cinemaId=${cinemaId}`)
+  //     .then(res => res.json())
+  //     .then(data => setCinemas(data))
+  // };
+
+  const handleCinema = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const target = event.target as HTMLDivElement;
+    const cinemaId = target.getAttribute('data-value')
+    // setIsDropdownOpen(false);
+
+    // условие с проверкой 
     fetch(API_URL + `movies?cinemaId=${cinemaId}`)
-      .then(res => res.json())
-      .then(data => setCinemas(data))
-  };
+        .then(res => res.json())
+        .then(data => setCinemas(data))
+};
 
   return (
     <div className={styles.mainPageContainer}>
@@ -57,12 +62,23 @@ export default function Main() {
               onChange={handleChange}
             />
           </label>
-          <select name="genres" defaultValue='' id="genres" onChange={handleGenre}>
+          <FilterSearch label={'Жанр'} placeholder={'Выберите жанр'} children={genresForFilter} stateSetter={handleGenre}/>
+          {isLoadingCinemas 
+          ? <FilterSearch label={'Кинотеатр'} placeholder={'Выберите кинотеатр'} children={[]}/>
+          : (!cinemasData || isErrorCinemas) 
+            ? <FilterSearch label={'Кинотеатр'} placeholder={'Выберите кинотеатр'} children={[]}/> 
+            : <FilterSearch label={'Кинотеатр'} placeholder={'Выберите кинотеатр'} children={cinemasData} stateSetter={handleCinema}/>
+          }
+          {/* <FilterSearch label={'Кинотеатр'} placeholder={'Выберите кинотеатр'} children={genresForFilter.map(genre=> genres[genre as GenreKey])}/> */}
+
+          {/* <select name="genres" defaultValue='' id="genres" onChange={handleGenre}>
             <option value="">Выберите Жанр</option>
-            {genresForFilter
-              .map(genre => <option value={genre} key={genre}>{genres[genre as GenreKey]}</option>)}
-          </select>
-          {
+            {
+              genresForFilter
+                .map(genre => <option value={genre} key={genre}>{genres[genre as GenreKey]}</option>)
+            }
+          </select> */}
+          {/* {
             isLoadingCinemas
               ? (<select defaultValue='' name="cinemas" id="cinemas" onChange={handleCinema}>
                 <option value="">Выберите кинотеатр</option>
@@ -79,7 +95,7 @@ export default function Main() {
                     })}
                   </select>)
               )
-          }
+          } */}
         </form>
       </div>
       </div>
@@ -89,10 +105,3 @@ export default function Main() {
     </div>
   )
 }
-
-{/* <select defaultValue='' name="cinemas" id="cinemas" onChange={handleCinema}>
-  <option value="">Выберите кинотеатр</option>
-  {cinemasData.map(cinema => {
-    return <option value={cinema.id} key={cinema.id}>{cinema.name}</option>
-  })}
-</select> */}
