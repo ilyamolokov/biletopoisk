@@ -6,12 +6,16 @@ import { useDispatch } from "react-redux"
 import { cartActions } from "@/redux/features/cart"
 import { useSelector } from "react-redux";
 import { selectProductAmount } from "@/redux/features/cart/selector";
-import { RootState } from "@/redux/features/cart/selector";
 import { usePathname } from 'next/navigation'
 import { createPortal } from "react-dom"
 import { Modal } from "../Modal/Modal"
+import { RootState } from "@/types"
 
-export const Counter: FunctionComponent<{movieId:string}> = ({ movieId }) => {
+interface CounterProps {
+    movieId:string
+}
+
+export const Counter: FunctionComponent<CounterProps> = ({ movieId }) => {
     const dispatch = useDispatch();
     const path = usePathname();
     const productAmount = useSelector((state:RootState) => selectProductAmount(state, movieId))
@@ -39,9 +43,15 @@ export const Counter: FunctionComponent<{movieId:string}> = ({ movieId }) => {
     }
     return (
         <div className={styles.addToCart}>
-            <Image onClick={ (e)=> handleDecrement(e) }  className={productAmount === 0 ? `${styles.buttonActive} ${styles.buttonInactive}` : styles.buttonActive} rel="icon" src="/icons/minus.svg" sizes="9x9" width={20} height={20} alt="minus"/>
+            <Image onClick={ (e)=> handleDecrement(e) }  className={productAmount === 0 
+                ? `${styles.buttonActive} ${styles.buttonInactive}` 
+                : styles.buttonActive
+            } rel="icon" src="/icons/minus.svg" sizes="9x9" width={20} height={20} alt="minus"/>
             <span className={styles.quantity}>{productAmount}</span>
-            <Image onClick={ (e)=> handleIncrement(e) } className={productAmount === 30 ? `${styles.buttonActive} ${styles.buttonInactive}` : styles.buttonActive} rel="icon" src="/icons/plus.svg" sizes="9x9" width={20} height={20} alt="plus" />
+            <Image onClick={ (e)=> handleIncrement(e) } className={productAmount === 30 
+                ? `${styles.buttonActive} ${styles.buttonInactive}` 
+                : styles.buttonActive
+            } rel="icon" src="/icons/plus.svg" sizes="9x9" width={20} height={20} alt="plus" />
             {
                 path === "/cart" 
                 &&  

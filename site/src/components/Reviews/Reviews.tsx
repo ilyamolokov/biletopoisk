@@ -2,9 +2,20 @@ import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
 import { useGetReviewQuery } from "@/redux/services/movieApi";
 import { Review } from "../Review/Review";
+import { TypeReviews } from "@/types";
 
-export const Reviews: FunctionComponent<{ movieId: string }> = ({ movieId }) => {
-    const { data, isLoading, error } = useGetReviewQuery(movieId);
+interface ReviewsProps { 
+    movieId: string 
+}
+
+interface useQueryProps { 
+    data: TypeReviews, 
+    isLoading: boolean, 
+    error: any 
+}
+
+export const Reviews: FunctionComponent<ReviewsProps> = ({ movieId }) => {
+    const { data, isLoading, error } = useGetReviewQuery(movieId) as useQueryProps;
 
     if (isLoading) {
         return <span>Loading...</span>

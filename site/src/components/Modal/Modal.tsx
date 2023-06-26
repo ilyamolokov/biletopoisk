@@ -5,13 +5,13 @@ import Image from 'next/image'
 import { useDispatch } from "react-redux"
 import { cartActions } from "@/redux/features/cart"
 
-interface Props {
+interface ModalProps {
     isModalOpen: boolean,
     setIsModalOpen: React.Dispatch<SetStateAction<boolean>>,
     movieId: string
 }
 
-export const Modal: FunctionComponent<Props> = ({ isModalOpen, setIsModalOpen, movieId }) => {
+export const Modal: FunctionComponent<ModalProps> = ({ isModalOpen, setIsModalOpen, movieId }) => {
     const ref = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch()
 

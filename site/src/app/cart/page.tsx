@@ -1,18 +1,18 @@
 'use client'
 import { useGetMoviesQuery } from "@/redux/services/movieApi"
 import styles from "./styles.module.css"
-import { MovieCard } from "@/components/MovieCard/MovieCard";
+import MovieCard from "@/components/MovieCard/MovieCard";
 import Link from "next/link";
-import { RootState, selectCartModule, selectTotalAmount } from "@/redux/features/cart/selector";
+import { selectCartModule, selectTotalAmount } from "@/redux/features/cart/selector";
 import { useSelector } from "react-redux";
+import { RootState } from "@/types";
 
 export default function Cart() {
     const { data, isLoading, error } = useGetMoviesQuery();
-
     const cart = useSelector((state: RootState) => selectCartModule(state))
     const totalAmount = useSelector((state: RootState) => selectTotalAmount(state))
-
     const cartProducts = new Set(Object.keys(cart))
+    
     if (isLoading) {
         return <span>Loading...</span>
     }

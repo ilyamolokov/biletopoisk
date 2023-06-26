@@ -5,7 +5,7 @@ export const genres = {
     horror:'Ужасы',
     action:'Боевик',
     comedy:'Комедия',
-}
+} as const
 
 export const genresForFilter = [
     {
@@ -24,7 +24,7 @@ export const genresForFilter = [
         name : 'Комедия',
         id: 'comedy'
     },
-]
+] as const
 
 export const qAndA = [
     {

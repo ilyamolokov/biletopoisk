@@ -1,15 +1,13 @@
 import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
 import Image from 'next/image'
+import { TypeReview } from "@/types"
 
-interface Review { 
-    id: string, 
-    name: string, 
-    text:string, 
-    rating: number
+interface ReviewProps { 
+    review:TypeReview
 }
 
-export const Review: FunctionComponent<{review:Review}> = ({review}) => {
+export const Review: FunctionComponent<ReviewProps> = ({review}) => {
     return (
         <div className={styles.reviewCard}>
             <div className={styles.reviewImage}>

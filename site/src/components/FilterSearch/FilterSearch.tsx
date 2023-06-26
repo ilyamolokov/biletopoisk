@@ -4,12 +4,18 @@ import styles from "./styles.module.css"
 import { createPortal } from "react-dom"
 import { Dropdown } from "../Dropdown/Dropdown"
 import Image from 'next/image'
+import { Cinemas, GenresForFilterType } from "@/types"
 
-export const FilterSearch: FunctionComponent<any> = ({ label, children, stateSetter }: any) => {
+interface FilterSearchProps {
+    label:string, 
+    children: Cinemas | GenresForFilterType, 
+    stateSetter: (prop: string) => void
+}
+
+export const FilterSearch: FunctionComponent<FilterSearchProps> = ({ label, children, stateSetter }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [dropDownPos, setDropDownPos] = useState({})
     const [placeholder, setPlaceholder] = useState(`Выберите ${label.toLocaleLowerCase()}`)
-
     const ref = useRef<HTMLLabelElement>(null);
 
     useEffect(() => {

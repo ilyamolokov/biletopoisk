@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { movieApi } from "@/redux/services/movieApi";
 import { cartReducer } from ".";
+import { RootState } from "../../../types/index";
 
-const rootReducer = combineReducers({cart: cartReducer,[movieApi.reducerPath]: movieApi.reducer});
-export type RootState = ReturnType<typeof rootReducer>;
+export const rootReducer = combineReducers({cart: cartReducer,[movieApi.reducerPath]: movieApi.reducer});
 
 export const selectCartModule = (state:RootState) => state.cart
 

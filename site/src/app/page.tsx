@@ -3,12 +3,12 @@ import { useState } from "react"
 import styles from "./styles.module.css"
 import { FilterSearch } from "@/components/FilterSearch/FilterSearch"
 import { MovieList } from "@/components/MovieList/MovieList"
-import { Movies, useGetCinemasQuery } from "@/redux/services/movieApi"
+import { useGetCinemasQuery } from "@/redux/services/movieApi"
 import { API_URL, genresForFilter } from "@/common/constants"
+import { Movies } from "@/types"
 
 export default function Main() {
   const { data: cinemasData, isLoading: isLoadingCinemas, error: isErrorCinemas } = useGetCinemasQuery();
-
   const [input, setInput] = useState("");
   const [genre, setGenre] = useState("");
   const [cinemas, setCinemas] = useState<Movies>([]);
@@ -24,8 +24,8 @@ export default function Main() {
   const handleCinema = (cinemaId:string) => {
     fetch(API_URL + `movies?cinemaId=${cinemaId}`)
         .then(res => res.json())
-        .then(data => setCinemas(data))
-};
+        .then((data:Movies) => setCinemas(data))
+  };
 
   return (
     <div className={styles.mainPageContainer}>
@@ -45,11 +45,12 @@ export default function Main() {
             />
           </label>
           <FilterSearch label={'Жанр'} children={genresForFilter} stateSetter={handleGenre}/>
-          {isLoadingCinemas 
-          ? <FilterSearch label={'Кинотеатр'} children={[]}/>
-          : (!cinemasData || isErrorCinemas) 
-            ? <FilterSearch label={'Кинотеатр'} children={[]}/> 
-            : <FilterSearch label={'Кинотеатр'} children={cinemasData} stateSetter={handleCinema}/>
+          {
+            <FilterSearch 
+              label={'Кинотеатр'} 
+              children={(!isLoadingCinemas && cinemasData && !isErrorCinemas) ? cinemasData : []}
+              stateSetter={(!isLoadingCinemas && cinemasData && !isErrorCinemas) ? handleCinema : ()=>{}}
+            />
           }
         </form>
       </div>

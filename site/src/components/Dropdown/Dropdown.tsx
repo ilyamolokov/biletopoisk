@@ -1,7 +1,20 @@
-import { FunctionComponent, useCallback, useEffect, useRef } from "react"
+import { Dispatch, FunctionComponent, SetStateAction, useCallback, useEffect, useRef } from "react"
 import styles from "./styles.module.css"
+import { Cinemas, GenresForFilterType } from "@/types"
 
-export const Dropdown: FunctionComponent<any> = ({ 
+interface DropdownProps {
+    position: {
+        top?: number,
+        left?: number
+    },
+    placeholder: string,
+    setIsDropdownOpen: Dispatch<SetStateAction<boolean>>,
+    stateSetter: ((prop: string) => void),
+    setPlaceholder: Dispatch<SetStateAction<string>>,
+    children: Cinemas | GenresForFilterType 
+}
+
+export const Dropdown: FunctionComponent<DropdownProps> = ({ 
     children,
     position,
     placeholder,

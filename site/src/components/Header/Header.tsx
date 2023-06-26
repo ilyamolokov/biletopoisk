@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from 'next/image'
 import { useSelector } from "react-redux";
 import { selectTotalAmount } from "@/redux/features/cart/selector";
-import { RootState } from "@/redux/features/cart/selector";
+import { RootState } from "@/types"
 
 export const Header: FunctionComponent = () => {
     const productAmount = useSelector((state:RootState) => selectTotalAmount(state))

@@ -1,23 +1,15 @@
 import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
-import { GenreKey } from "../MovieCard/MovieCard"
 import { genres } from "@/common/constants"
 import { Counter } from "../Counter/Counter"
 import Image from 'next/image'
+import { Movie } from "@/types"
 
-interface Movie {
-    description: string,
-    director: string,
-    genre: string,
-    id: string,
-    posterUrl: string,
-    rating: number,
-    releaseYear: number,
-    reviewIds:string[],
-    title: string,
+interface MovieDetailsProps {
+movie:Movie
 }
 
-export const MovieDetails: FunctionComponent<{movie:Movie}> = ({movie}) => {
+export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({movie}) => {
     return (
         <div className={styles.movie}>
             <Image rel="icon" src={movie.posterUrl} className={styles.movieImage} alt="poster" width={400} height={500}/>
@@ -28,7 +20,7 @@ export const MovieDetails: FunctionComponent<{movie:Movie}> = ({movie}) => {
                 </div>
                 <span className={styles.details}>
                     <b>Жанр: </b>
-                    {genres[movie.genre as GenreKey]}
+                    {genres[movie.genre]}
                 </span>
                 <span className={styles.details}>
                     <b>Год выпуска: </b>
