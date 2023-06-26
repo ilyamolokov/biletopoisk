@@ -7,7 +7,7 @@ interface DropdownProps {
         top?: number,
         left?: number
     },
-    placeholder: string,
+    defaultPlaceholder: string,
     setIsDropdownOpen: Dispatch<SetStateAction<boolean>>,
     stateSetter: ((prop: string) => void),
     setPlaceholder: Dispatch<SetStateAction<string>>,
@@ -17,7 +17,7 @@ interface DropdownProps {
 export const Dropdown: FunctionComponent<DropdownProps> = ({ 
     children,
     position,
-    placeholder,
+    defaultPlaceholder,
     setPlaceholder,
     setIsDropdownOpen,
     stateSetter }) => {
@@ -47,7 +47,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 
     return (
         <div className={styles.dropdown} style={position} ref={ref}>
-            <div onClick={handleClick} className={styles.dropdownChild} data-id="" data-placeholder={placeholder} >{placeholder}</div>
+            <div onClick={handleClick} className={styles.dropdownChild} data-id="" data-placeholder={defaultPlaceholder} >{defaultPlaceholder}</div>
             {children?.map((child: any) => <div onClick={handleClick} key={child?.id} data-id={child.id} data-placeholder={child.name} className={styles.dropdownChild}>{child.name}</div>)}
         </div>
     )

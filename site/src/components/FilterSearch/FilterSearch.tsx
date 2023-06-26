@@ -13,9 +13,11 @@ interface FilterSearchProps {
 }
 
 export const FilterSearch: FunctionComponent<FilterSearchProps> = ({ label, children, stateSetter }) => {
+    const defaultPlaceholder = `Выберите ${label.toLocaleLowerCase()}`
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [dropDownPos, setDropDownPos] = useState({})
-    const [placeholder, setPlaceholder] = useState(`Выберите ${label.toLocaleLowerCase()}`)
+    const [placeholder, setPlaceholder] = useState(defaultPlaceholder)
     const ref = useRef<HTMLLabelElement>(null);
 
     useEffect(() => {
@@ -38,7 +40,7 @@ export const FilterSearch: FunctionComponent<FilterSearchProps> = ({ label, chil
                 const left = ref.current?.getBoundingClientRect().left
                 setDropDownPos({...dropDownPos, top, left})
             }} >
-                <span className={styles.fieldName} style={placeholder !== `Выберите ${label.toLocaleLowerCase()}` ? {color:'#1B1F23'} : {}}>{placeholder}</span> 
+                <span className={styles.fieldName} style={placeholder !== defaultPlaceholder ? {color:'#1B1F23'} : {}}>{placeholder}</span> 
                 <Image className={isDropdownOpen ? styles.buttonUp : ""} rel="icon" src="/icons/open-grey.svg" width={18} height={18} alt="open"/>
             </div>
             {isDropdownOpen && createPortal(
@@ -47,7 +49,7 @@ export const FilterSearch: FunctionComponent<FilterSearchProps> = ({ label, chil
                     children={children} 
                     setIsDropdownOpen={setIsDropdownOpen} 
                     stateSetter={stateSetter} 
-                    placeholder={`Выберите ${label.toLocaleLowerCase()}`} 
+                    defaultPlaceholder={defaultPlaceholder} 
                     setPlaceholder={setPlaceholder}
                 />,
                 document.getElementById("dropdown")!

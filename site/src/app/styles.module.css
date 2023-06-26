@@ -16,7 +16,7 @@
     border-radius: 8px;
 }
 .filterContainer {
-    padding: 24px;
+    padding: 8px 24px 24px;
     top: 15%;
     position: sticky;
 }
@@ -46,7 +46,8 @@
     color:#999FA6;
 }
 .textField:focus {
-    outline-color: #FF5500;
+    outline: none;
+    border: 1px solid #FF5500;
 }
 .fieldName {
     margin-bottom: 4px;

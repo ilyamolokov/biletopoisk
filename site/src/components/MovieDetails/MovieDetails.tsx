@@ -6,13 +6,19 @@ import Image from 'next/image'
 import { Movie } from "@/types"
 
 interface MovieDetailsProps {
-movie:Movie
+    movie:Movie
 }
 
 export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({movie}) => {
     return (
         <div className={styles.movie}>
-            <Image rel="icon" src={movie.posterUrl} className={styles.movieImage} alt="poster" width={400} height={500}/>
+            {
+            movie.posterUrl 
+                ? <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={400} height={500} />
+                : <div className={styles.movieImagePlaceholder}>
+                    <Image rel="icon" src="/icons/review.svg" alt="review" width={26} height={22} />
+                </div>
+            }
             <div className={styles.movieInfo}>
                 <div className={styles.movieNameAndAddToCart}>
                     <h1 className={styles.movieName}>{movie.title}</h1>
