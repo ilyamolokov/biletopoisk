@@ -1,8 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 Домашнее задание "Реакт"
 
 Автор: Илья Молоков
-Для связи со мной[@molokovoffline](https://t.me/molokovoffline)
+
+Для связи со мной [@molokovoffline](https://t.me/molokovoffline)
+
 Пишите в любое время
 
 ## Действия для запуска приложения
@@ -31,4 +32,5 @@ pnpm dev
 ```
 
 Откройте ссылку в браузере [http://localhost:3000](http://localhost:3000)
+
 🐘
