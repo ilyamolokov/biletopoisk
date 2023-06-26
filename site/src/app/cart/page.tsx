@@ -6,6 +6,8 @@ import Link from "next/link";
 import { selectCartModule, selectTotalAmount } from "@/redux/features/cart/selector";
 import { useSelector } from "react-redux";
 import { RootState } from "@/types";
+import { Loading } from "@/components/Loading/Loading";
+import { NotFound } from "@/components/NotFound/NotFound";
 
 export default function Cart() {
     const { data, isLoading, error } = useGetMoviesQuery();
@@ -14,10 +16,10 @@ export default function Cart() {
     const cartProducts = new Set(Object.keys(cart))
     
     if (isLoading) {
-        return <span>Loading...</span>
+        return <Loading/>
     }
     if (!data || error) {
-        return <span>NotFound</span>
+        return <NotFound/>
     }
     return (
         !totalAmount

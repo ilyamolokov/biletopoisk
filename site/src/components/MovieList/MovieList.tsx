@@ -4,6 +4,8 @@ import  MovieCard  from "../MovieCard/MovieCard";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import { Movies, Movie } from "@/types";
+import { Loading } from "../Loading/Loading";
+import { NotFound } from "../NotFound/NotFound";
 
 interface MovieListProps {
     cinemas: Movies
@@ -21,10 +23,10 @@ export const MovieList: FunctionComponent<MovieListProps> = ({ cinemas, input, g
     const { data, isLoading, error } = useGetMoviesQuery() as useQueryProps;
 
     if (isLoading) {
-        return <span>Loading...</span>
+        return <Loading/>
     }
     if (!data || error) {
-        return <span>NotFound</span>
+        return <NotFound/>
     }
 
     return (

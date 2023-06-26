@@ -3,6 +3,8 @@ import styles from "./styles.module.css"
 import { useGetReviewQuery } from "@/redux/services/movieApi";
 import { Review } from "../Review/Review";
 import { TypeReviews } from "@/types";
+import { Loading } from "../Loading/Loading";
+import { NotFound } from "../NotFound/NotFound";
 
 interface ReviewsProps { 
     movieId: string 
@@ -18,10 +20,10 @@ export const Reviews: FunctionComponent<ReviewsProps> = ({ movieId }) => {
     const { data, isLoading, error } = useGetReviewQuery(movieId) as useQueryProps;
 
     if (isLoading) {
-        return <span>Loading...</span>
+        return <Loading/>
     }
     if (!data || error) {
-        return <span>NotFound</span>
+        return <NotFound/>
     }
 
     return (
