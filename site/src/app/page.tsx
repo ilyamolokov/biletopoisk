@@ -4,7 +4,7 @@ import styles from "./styles.module.css"
 import { FilterSearch } from "@/components/FilterSearch/FilterSearch"
 import { MovieList } from "@/components/MovieList/MovieList"
 import { Movies, useGetCinemasQuery } from "@/redux/services/movieApi"
-import { API_URL, genresForFilter,genres } from "@/common/constants"
+import { API_URL, genresForFilter } from "@/common/constants"
 
 export default function Main() {
   const { data: cinemasData, isLoading: isLoadingCinemas, error: isErrorCinemas } = useGetCinemasQuery();

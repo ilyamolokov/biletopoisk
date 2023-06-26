@@ -1,6 +1,6 @@
-import { Cinemas, Movies, useGetMoviesQuery } from "@/redux/services/movieApi"
+import { Movies, useGetMoviesQuery } from "@/redux/services/movieApi"
 import styles from "./styles.module.css"
-import { GenreKey, MovieCard } from "../MovieCard/MovieCard";
+import { MovieCard } from "../MovieCard/MovieCard";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 
@@ -17,7 +17,6 @@ interface useQueryProps {
 
 export const MovieList: FunctionComponent<MovieListProps> = ({ cinemas, input, genre }) => {
     const { data: moviesData, isLoading: isLoadingMovies, error: isErrorMovies } = useGetMoviesQuery() as useQueryProps;
-
 
     if (isLoadingMovies) {
         return <span>Loading...</span>

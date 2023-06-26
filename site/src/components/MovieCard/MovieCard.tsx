@@ -4,9 +4,7 @@ import styles from "./styles.module.css"
 import { genres } from "@/common/constants"
 import { Counter } from "../Counter/Counter";
 import Image from 'next/image'
-import { useSelector } from "react-redux";
-import { selectProductAmount } from "@/redux/features/cart/selector";
-import { RootState } from "@/redux/features/cart/selector";
+
 export type GenreKey = "fantasy" | "horror" | "action" | "comedy";
 
 interface Movie {

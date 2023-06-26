@@ -1,8 +1,6 @@
 'use client'
 import { useGetMovieQuery } from "@/redux/services/movieApi"
-import styles from "./stylmovieDetailses.module.css"
 import { MovieDetails } from "@/components/MovieDetails/MovieDetails"
-import { useRouter } from 'next/router';
 import { Reviews } from "@/components/Reviews/Reviews";
 
 export default function Movie({ params }: { params: { id: string } }) {

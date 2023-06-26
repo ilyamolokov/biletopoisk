@@ -1,8 +1,6 @@
 'use client'
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent } from "react"
 import styles from "./styles.module.css"
-import { createPortal } from "react-dom"
-import { Modal } from "../Modal/Modal"
 import Link from "next/link"
 import Image from 'next/image'
 import { useSelector } from "react-redux";

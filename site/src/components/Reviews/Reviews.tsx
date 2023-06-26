@@ -3,13 +3,6 @@ import styles from "./styles.module.css"
 import { useGetReviewQuery } from "@/redux/services/movieApi";
 import { Review } from "../Review/Review";
 
-interface Review { 
-    id: string, 
-    name: string, 
-    text:string, 
-    rating: number
-}
-
 export const Reviews: FunctionComponent<{ movieId: string }> = ({ movieId }) => {
     const { data, isLoading, error } = useGetReviewQuery(movieId);
 

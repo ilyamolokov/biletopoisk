@@ -1,5 +1,5 @@
 'use client'
-import { FunctionComponent, useCallback, useEffect, useRef, useState } from "react"
+import { FunctionComponent, useEffect, useRef, useState } from "react"
 import styles from "./styles.module.css"
 import { createPortal } from "react-dom"
 import { Dropdown } from "../Dropdown/Dropdown"
@@ -22,10 +22,6 @@ export const FilterSearch: FunctionComponent<any> = ({ label, children, stateSet
             document.querySelector('#dropdown')?.classList.remove("dropdownOpen") 
         };
     }, [isDropdownOpen]);
-    
-    // useEffect(()=>{
-    //     setPlaceholder()
-    // })
 
     return (
         <label ref={ref}>

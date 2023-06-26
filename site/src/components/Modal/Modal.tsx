@@ -1,5 +1,5 @@
 'use client'
-import { FunctionComponent, SetStateAction, useCallback, useEffect, useRef, useState } from "react"
+import { FunctionComponent, SetStateAction, useCallback, useEffect, useRef } from "react"
 import styles from "./styles.module.css"
 import Image from 'next/image'
 import { useDispatch } from "react-redux"

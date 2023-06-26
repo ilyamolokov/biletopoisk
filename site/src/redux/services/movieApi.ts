@@ -1,6 +1,5 @@
 import { API_URL } from '@/common/constants';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit"
 
 interface Movie {
     description: string,

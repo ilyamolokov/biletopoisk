@@ -7,9 +7,7 @@ export default function QuestionsPage() {
     return (
         <div className={styles.qAndASection}>
             <h1 className={styles.questionsHeader}>Вопросы-ответы</h1>
-            {
-                qAndA.map((element, index) => <Question key={index} question={element.question} answer={element.answer}/>)
-            }
+            { qAndA.map((element, index) => <Question key={index} question={element.question} answer={element.answer}/>) }
         </div>
     )
 }

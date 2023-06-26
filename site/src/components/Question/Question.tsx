@@ -9,7 +9,6 @@ interface QandA {
 }
 
 export const Question: FunctionComponent<QandA> = ({question, answer}) => {
-
     const [isOpen, setIsOpen] = useState(false);
 
     return (

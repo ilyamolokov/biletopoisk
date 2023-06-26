@@ -1,8 +1,13 @@
-import { FunctionComponent, useCallback, useEffect, useRef, useState } from "react"
+import { FunctionComponent, useCallback, useEffect, useRef } from "react"
 import styles from "./styles.module.css"
-import { API_URL } from "@/common/constants";
 
-export const Dropdown: FunctionComponent<any> = ({ children, position, placeholder, setPlaceholder, setIsDropdownOpen, stateSetter }: any) => {
+export const Dropdown: FunctionComponent<any> = ({ 
+    children,
+    position,
+    placeholder,
+    setPlaceholder,
+    setIsDropdownOpen,
+    stateSetter }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -18,28 +23,10 @@ export const Dropdown: FunctionComponent<any> = ({ children, position, placehold
         };
     }, [handleClickOutside]);
 
-    // const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    //     const target = event.target as HTMLDivElement;
-    //     setIsDropdownOpen(false);
-    //     console.log(target.getAttribute('data-value'));
-    //   };
-
-    // const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    //     const target = event.target as HTMLDivElement;
-    //     const cinemaId = target.getAttribute('data-value')
-    //     setIsDropdownOpen(false);
-
-    //     // условие с проверкой 
-    //     fetch(API_URL + `movies?cinemaId=${cinemaId}`)
-    //         .then(res => res.json())
-    //         .then(data => stateSetter(data))
-    // };
-
     const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = event.target as HTMLDivElement;
         const dataId = target.getAttribute('data-id') ?? ''
         const dataPlaceholder = target.getAttribute('data-placeholder') ?? ''
-
         setPlaceholder(dataPlaceholder);
         setIsDropdownOpen(false);
         stateSetter(dataId);
