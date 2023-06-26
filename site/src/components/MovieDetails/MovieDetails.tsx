@@ -14,7 +14,7 @@ export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({movie}) => {
         <div className={styles.movie}>
             {
             movie.posterUrl 
-                ? <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={400} height={500} />
+                ? <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={400} height={500} loading="lazy"/>
                 : <div className={styles.movieImagePlaceholder}>
                     <Image rel="icon" src="/icons/review.svg" alt="review" width={26} height={22} />
                 </div>

@@ -14,7 +14,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
         <div className={styles.movieCard}>
             {
             movie.posterUrl 
-                ? <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={100} height={120} />
+                ? <Image className={styles.movieImage} src={movie.posterUrl} alt="poster" width={100} height={120} loading="lazy"/>
                 : <div className={styles.movieImagePlaceholder}>
                     <Image rel="icon" src="/icons/review.svg" alt="review" width={26} height={22} />
                 </div>
