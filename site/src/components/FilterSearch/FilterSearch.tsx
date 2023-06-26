@@ -5,9 +5,11 @@ import { createPortal } from "react-dom"
 import { Dropdown } from "../Dropdown/Dropdown"
 import Image from 'next/image'
 
-export const FilterSearch: FunctionComponent<any> = ({ label, placeholder, children, stateSetter }: any) => {
+export const FilterSearch: FunctionComponent<any> = ({ label, children, stateSetter }: any) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [dropDownPos, setDropDownPos] = useState({})
+    const [placeholder, setPlaceholder] = useState(`Выберите ${label.toLocaleLowerCase()}`)
+
     const ref = useRef<HTMLLabelElement>(null);
 
     useEffect(() => {
@@ -21,7 +23,9 @@ export const FilterSearch: FunctionComponent<any> = ({ label, placeholder, child
         };
     }, [isDropdownOpen]);
     
-
+    // useEffect(()=>{
+    //     setPlaceholder()
+    // })
 
     return (
         <label ref={ref}>
@@ -32,11 +36,18 @@ export const FilterSearch: FunctionComponent<any> = ({ label, placeholder, child
                 const left = ref.current?.getBoundingClientRect().left
                 setDropDownPos({...dropDownPos, top, left})
             }} >
-                <span className={styles.fieldName}>{placeholder}</span>
+                <span className={styles.fieldName} style={placeholder !== `Выберите ${label.toLocaleLowerCase()}` ? {color:'#1B1F23'} : {}}>{placeholder}</span> 
                 <Image className={isDropdownOpen ? styles.buttonUp : ""} rel="icon" src="/icons/open-grey.svg" width={18} height={18} alt="open"/>
             </div>
             {isDropdownOpen && createPortal(
-                <Dropdown position={dropDownPos} children={children} setIsDropdownOpen={setIsDropdownOpen} placeholder={placeholder} stateSetter={stateSetter} />,
+                <Dropdown 
+                    position={dropDownPos} 
+                    children={children} 
+                    setIsDropdownOpen={setIsDropdownOpen} 
+                    stateSetter={stateSetter} 
+                    placeholder={`Выберите ${label.toLocaleLowerCase()}`} 
+                    setPlaceholder={setPlaceholder}
+                />,
                 document.getElementById("dropdown")!
             )}
         </label>

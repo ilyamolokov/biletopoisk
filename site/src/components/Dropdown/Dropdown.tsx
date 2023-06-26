@@ -2,7 +2,7 @@ import { FunctionComponent, useCallback, useEffect, useRef, useState } from "rea
 import styles from "./styles.module.css"
 import { API_URL } from "@/common/constants";
 
-export const Dropdown: FunctionComponent<any> = ({ children, position, placeholder, setIsDropdownOpen, stateSetter }: any) => {
+export const Dropdown: FunctionComponent<any> = ({ children, position, placeholder, setPlaceholder, setIsDropdownOpen, stateSetter }: any) => {
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -36,14 +36,19 @@ export const Dropdown: FunctionComponent<any> = ({ children, position, placehold
     // };
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const target = event.target as HTMLDivElement;
+        const dataId = target.getAttribute('data-id') ?? ''
+        const dataPlaceholder = target.getAttribute('data-placeholder') ?? ''
+
+        setPlaceholder(dataPlaceholder);
         setIsDropdownOpen(false);
-        stateSetter(event);
+        stateSetter(dataId);
     };
 
     return (
         <div className={styles.dropdown} style={position} ref={ref}>
-            <div onClick={handleClick} className={styles.dropdownChild} data-value="">{placeholder}</div>
-            {children?.map((child: any) => <div onClick={handleClick} key={child?.id} data-value={child?.id} className={styles.dropdownChild}>{child?.name ?? child}</div>)}
+            <div onClick={handleClick} className={styles.dropdownChild} data-id="" data-placeholder={placeholder} >{placeholder}</div>
+            {children?.map((child: any) => <div onClick={handleClick} key={child?.id} data-id={child.id} data-placeholder={child.name} className={styles.dropdownChild}>{child.name}</div>)}
         </div>
     )
 }
