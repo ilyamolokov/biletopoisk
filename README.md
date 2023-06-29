@@ -4,7 +4,7 @@
 
 Убедительная просьба для проверяющих дать обратную связь
 
-Для связи со мной [@molokovoffline](https://t.me/molokovoffline)
+Для связи со мной [@ilyamolokov](https://t.me/ilyamolokov)
 
 Пишите в любое время
 
